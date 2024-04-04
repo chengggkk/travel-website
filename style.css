@@ -1,0 +1,144 @@
+/* style.css */
+
+@import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
+body {
+    background-color: #1a1a1a;
+    /* Set background color to dark gray */
+    background-attachment: fixed;
+    /* Fixed background */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: darkgray;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /* Add shadow effect */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid white;
+    /* Set border color to white */
+    cursor: pointer;
+}
+
+.search {
+    background-color: transparent;
+    border: 1px solid white;
+    /* Set border color to white */
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.startdate {
+    background-color: transparent;
+    border: 1px solid white;
+    /* Set border color to white */
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.CalendarDay__selected_span {
+    background: #82e0aa;
+    color: white;
+
+    .container {
+        border: 1px solid light-red;
+    }
+
+    .CalendarDay__selected {
+        background: dark-red;
+        color: white;
+    }
+
+    .CalendarDay__selected:hover {
+        background: orange;
+        color: white;
+    }
+
+    .CalendarDay__hovered_span:hover,
+    .CalendarDay__hovered_span {
+        background: brown;
+    }
+}
+.CalendarDay__selected_span {
+    background-color: #82e0aa;
+    color: white;
+    border: 1px solid lightred;
+}
+
+.CalendarDay__selected {
+    background-color: darkred;
+    color: white;
+}
+
+.CalendarDay__selected:hover {
+    background-color: orange;
+    color: white;
+}
+
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+    background-color: brown;
+}
+.tra_form{
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    color: white; /* Set font color to white */
+    display: inline-block; /* Display forms next to each other */
+    width: 80%; /* Set width to 80% */
+    height: auto; /* Set height to auto */
+    position: fixed; /* Position the form */
+    top: 50%; /* Set top position to 50% */
+    left: 50%; /* Set left position to 50% */
+    transform: translate(-50%, -50%); /* Center the form */
+}
+
+
+.button {
+    width: 100px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
