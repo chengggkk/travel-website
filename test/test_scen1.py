@@ -10,6 +10,10 @@ from selenium.common.exceptions import NoAlertPresentException
 @pytest.fixture
 def browser():
     options = Options()
+    options.add_argument("--headless") # Run in headless mode
+    options.add_argument("--no-sandbox") # Bypass OS security model, required by Jenkins
+    options.add_argument("--disable-dev-shm-usage") # Overcome limited resource problems
+    options.add_argument("--disable-gpu") # Disable GPU hardware acceleration
     options.binary_location = os.environ.get("CHROME_BIN","C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")
     driver = webdriver.Chrome(options=options)
     yield driver
