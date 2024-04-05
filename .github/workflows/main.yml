@@ -22,6 +22,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest
         pip install selenium
+    - name: Setup Chrome Driver
+      uses: nanasess/setup-chromedriver@master
     - name: Run tests with pytest
       run: |
         pytest
+    env:
+      CHROME_BIN: /usr/bin/google-chrome
+      CHROME_PATH: /usr/lib/chromium-browser

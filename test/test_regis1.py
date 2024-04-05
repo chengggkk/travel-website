@@ -1,12 +1,16 @@
+import os
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture
 def browser():
-    driver = webdriver.Chrome()
+    options = Options()
+    options.binary_location = os.environ.get("CHROME_BIN", r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")
+    driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
 
