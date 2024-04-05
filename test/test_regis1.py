@@ -1,56 +1,47 @@
-import os
 import pytest
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import os
 
 @pytest.fixture
 def browser():
     options = Options()
-    options.binary_location = os.environ.get("CHROME_BIN", r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")
+    options.binary_location = os.environ.get("CHROME_BIN")
     driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
 
-def test_new_user_registration_scenario(browser):
-    # Given
-    print("Step 1: Opening login page")
-    browser.get("http://localhost/login.php")
-    assert "Login Page" in browser.title
+def test_user_registration_and_travel_planning(browser):
+    # Navigate to the application home page
+    browser.get('http://localhost/login.php')
 
-    print("Step 2: Entering address and password")
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "address"))).send_keys("new_address")
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "password"))).send_keys("new_password")
+    # Fill in the registration form
+    browser.find_element_by_name('address').send_keys('123')
+    browser.find_element_by_name('password').send_keys('123')
+    browser.find_element_by_name('submit').click()
 
-    print("Step 3: Clicking login button")
-    WebDriverWait(browser, 30).until(EC.element_to_be_clickable((By.ID, "login"))).click()
+    # Fill in the travel planning form
+    browser.find_element_by_name('start_date').send_keys('2024-05-01')
+    browser.find_element_by_name('end_date').send_keys('2024-05-10')
+    browser.find_element_by_name('travel_name').send_keys('Test Travel')
+    browser.find_element_by_name('submit').click()
 
-    print("Step 4: Waiting for error message")
-    error_message = WebDriverWait(browser, 30).until(EC.text_to_be_present_in_element((By.ID, "accountno"), "無此帳號"))
+    # Verify that the travel plan appears on the index page
+    assert '2024-05-01' in browser.page_source
+    assert '2024-05-10' in browser.page_source
+    assert 'Test Travel' in browser.page_source
 
-    print("Step 5: Verifying error message")
-    assert error_message
+    # Navigate to the travel plan page
+    browser.find_element_by_id('gotoarr').click()
 
-    print("Step 6: Clicking register button")
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "regis"))).click()
+    # Fill in the arrival details
+    browser.find_element_by_name('arr_date').send_keys('2024-05-02')
+    browser.find_element_by_name('arr_time').send_keys('10 AM')
+    browser.find_element_by_name('arr_loca').send_keys('Eiffel Tower5 Av. Anatole France, 巴黎法國')
+    browser.find_element_by_name('submit').click()
 
-    # When
-    # Go to register.php and input address, password, name, email
-    print("Step 7: Entering address, password, name, and email")
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "address"))).send_keys("new_address")
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "password"))).send_keys("new_password")
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "name"))).send_keys("new_name")
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "email"))).send_keys("new_email@gmail.com")
-    WebDriverWait(browser, 30).until(EC.element_to_be_clickable((By.ID, "regis-check"))).click()
-
-    # Then
-    assert "Enter your address, password, name, and email to register" in browser.page_source
-    assert WebDriverWait(browser, 30).until(EC.presence_of_element_located((By.ID, "regis-check")))
-
-    # Assert that we are back on the login page
-    assert "login.php" in browser.current_url
-
-if __name__ == "__main__":
-    pytest.main()
+    # Verify that the arrival details appear on the page
+    assert '2022-01-02' in browser.page_source
+    assert '10 AM' in browser.page_source
+    assert 'Eiffel Tower5 Av. Anatole France, 巴黎法國' in browser.page_source
