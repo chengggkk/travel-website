@@ -126,7 +126,7 @@ $travel_id = $_GET['travel_id'];
         </div>
     </div>
     <div align="center" style="margin-top:30px;">
-        <input style="margin-bottom:50px;" class="button" type="submit" value="新增行程">
+        <input style="margin-bottom:50px;" name="submit" class="button" type="submit" value="新增行程">
     </div>
     </form>
     <?php

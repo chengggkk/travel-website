@@ -33,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "<tr style='border: 1px solid white;'>";
         echo "<td style='border: 1px solid white;'>" . $row["start_date"] . "</a></td>";
         echo "<td style='border: 1px solid white;'>" . $row['end_date'] . "</a></td>";
-        echo "<td style='border: 1px solid white;'><a href='arrangement.php?travel_id=" . $row["travel_id"] . "'>" . $row['travel_name'] . "</a></td>";
+        echo "<td style='border: 1px solid white;'><a name='gotoarr' href='arrangement.php?travel_id=" . $row["travel_id"] . "'>" . $row['travel_name'] . "</a></td>";
         echo "</tr>";
     }
 } else {

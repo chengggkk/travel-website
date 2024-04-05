@@ -89,8 +89,8 @@
                     ?>
                 </div>
                 <div style="margin-top: 50px;">
-                    <button id="regis" onclick="event.preventDefault(); window.location.href='register.php'">註冊</button>
-                    <input class="button" id="login" type="submit" value="登入">
+                    <button name="regis" onclick="event.preventDefault(); window.location.href='register.php'">註冊</button>
+                    <input class="button" name="login" type="submit" value="登入">
                 </div>
             </div>
         </form>
