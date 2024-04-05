@@ -7,7 +7,7 @@ import os
 @pytest.fixture
 def browser():
     options = Options()
-    options.binary_location = os.environ.get("CHROME_BIN")
+    options.binary_location = os.environ.get("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")
     driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
