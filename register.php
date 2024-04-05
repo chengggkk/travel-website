@@ -28,7 +28,12 @@ session_start();
 
         form {
             padding: 50px;
-
+            background-color: white;
+            border-radius: 50px;
+            opacity: 0.9;
+        }
+        input {
+            margin: 10px 0;
         }
 
         .main-content {
@@ -52,9 +57,7 @@ session_start();
             background-color: #ffffff;
             color: #000000;
         }
-        .email-input {
-        width: 155px;
-    }
+
     </style>
 </head>
 
@@ -69,7 +72,7 @@ session_start();
             <label style="margin-left: 1px;" for="name">Name:</label>
             <input class="address" style="margin-left: 36px;" type="text" id="name" name="name"><br>
             <label style="margin-left: 3px;" for="email">Email:</label>
-            <input class="address email-input" style="margin-left: 35px;" type="email" id="email" name="email"><br>            <?php if (isset($_SESSION['message'])) {
+            <input class="address" style="margin-left: 35px;" type="email" id="email" name="email"><br>            <?php if (isset($_SESSION['message'])) {
                 // Display the message
                 echo "<div class='{$_SESSION['msg_type']}' style='color: red; text-align: center;'>{$_SESSION['message']}</div>";
 

@@ -83,7 +83,7 @@ $address = $_SESSION['address'];
             </div>
         </div>
         <div align="center">
-            <input type="submit" class="button" style="margin-top:30px; width:500px;" value="創建旅程">
+            <input type="submit" id="add-journey" class="button" style="margin-top:30px; width:500px;" value="創建旅程">
         </div>
     </form>
 </body>

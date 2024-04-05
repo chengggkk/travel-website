@@ -82,7 +82,7 @@
                     session_start();
 
                     if (isset($_SESSION['message'])) {
-                        echo "<div class='{$_SESSION['msg_type']}' style='color: red;'>{$_SESSION['message']}</div>";
+                        echo "<div id='accountno' class='{$_SESSION['msg_type']}' style='color: red;'>{$_SESSION['message']}</div>";
                         unset($_SESSION['message']);
                         unset($_SESSION['msg_type']);
                     }
