@@ -23,7 +23,10 @@ if (mysqli_query($link, $sql)) {
     header('Location: login.php'); // Redirect to login.php
     exit;
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($link);
+    session_start();
+    $_SESSION['message'] = "已有帳號";
+    header('Location: register.php'); // Redirect to register.php
+    exit;
 }
 
 // Close the connection

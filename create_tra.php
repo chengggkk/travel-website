@@ -13,7 +13,7 @@ $address = $_SESSION['address'];
     <style>
         .homeimg {
             position: absolute;
-            top: 0;
+            top: 2%;
             left: 0;
             width: 100%;
             height: 40%;
@@ -24,6 +24,7 @@ $address = $_SESSION['address'];
 
         .tra_form {
             background-color: transparent;
+            position: absolute;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -31,9 +32,8 @@ $address = $_SESSION['address'];
             /* Set font color to white */
             width: 80%;
             /* Set width to 80% */
-            position: fixed;
             /* Position the form */
-            top: 25%;
+            top: 27%;
             /* Set top position to 50% */
             left: 50%;
             /* Set left position to 50% */

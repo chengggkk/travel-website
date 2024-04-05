@@ -9,16 +9,28 @@ $(document).ready(function(){
                 type: 'POST',
                 data: { query: searchQuery },
                 success: function(data) {
-                    $('#search-results').html(data);
+                    $('#search-results').html('<a href="add-location.php" class="search-item" style="display:block; height:40px; margin-top:10px;">新增景點</a>' + data);
                 }
             });
         } else {
             $('#search-results').html('');
         }
     });
+    $('#search').on('click', 'a', function(e) {
+        // Check if the clicked anchor tag does not link to add-location.php
+        if ($(this).attr('href') !== 'add-location.php') {
+            e.preventDefault();
+            var selectedLocationName = $(this).text().trim();
+            var selectedLocationAddress = $(this).find('span').text();
+            $('.search').val(selectedLocationName + " - " + selectedLocationAddress);
+            $('#search').hide();
+        }
+    });
 });
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+
 <!-- navbar.php -->
 <?php
 session_start();

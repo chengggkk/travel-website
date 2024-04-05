@@ -16,23 +16,32 @@ if (!$link) {
 }
 
 // Prepare the SQL query
-$sql = "SELECT DISTINCT * FROM account WHERE address='$address' AND password='$password'";
+$sql = "SELECT DISTINCT * FROM account WHERE address='$address'";
 
 // Execute the query
 $result = mysqli_query($link, $sql);
 
 // Check the result
 if ($row = mysqli_fetch_assoc($result)) {
-    // Login successful
-    $_SESSION['address'] = $address;
-    $_SESSION['id'] = $row['id'];
-    $_SESSION['name'] = $row['name'];
-    $_SESSION['level'] = $row['level'];
-    header('Location: index.php'); // Redirect to index.php
-    exit;
+    // Address found, check password
+    if ($row['password'] == $password) {
+        // Login successful
+        $_SESSION['address'] = $address;
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['name'] = $row['name'];
+        $_SESSION['level'] = $row['level'];
+        header('Location: index.php'); // Redirect to index.php
+        exit;
+    } else {
+        // Wrong password
+        $_SESSION['message'] = "帳號或密碼錯誤";
+        $_SESSION['msg_type'] = "danger";
+        header('Location: login.php'); // Redirect to login.php
+        exit;
+    }
 } else {
-    // Login failed
-    $_SESSION['message'] = "帳號或密碼錯誤";
+    // Address not found
+    $_SESSION['message'] = "無此帳號";
     $_SESSION['msg_type'] = "danger";
     header('Location: login.php'); // Redirect to login.php
     exit;

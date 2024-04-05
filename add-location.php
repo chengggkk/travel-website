@@ -3,8 +3,10 @@
 if (isset($_SESSION['message'])) {
     echo '<script>alert("' . $_SESSION['message'] . '");</script>';
     unset($_SESSION['message']);
-}?>
+}
+require 'api-key.php';
 
+?>
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +20,7 @@ if (isset($_SESSION['message'])) {
             color: black;
             padding: 20px;
             height: 900px;
+            border-radius: 5px;
         }
 
         input[type="submit"] {
@@ -34,8 +37,8 @@ if (isset($_SESSION['message'])) {
 
 <body>
     <?php include 'navbar.php'; ?>
-    <div style="display: flex; margin-top:50px; margin-left:470px; position:absolute; ">
-        <img src="img/add-loca.jpg" alt="" style="width: auto; height: 900px;">
+    <div style="display: flex; margin-top:50px; margin-left:470px; position:absolute;">
+        <img src="img/add-loca.jpg" alt="" style="width: auto; height: 900px; border-radius: 5px; ">
         <form method="post" action="process_add-loca.php">
             <h1>新增景點</h1><br>
             Name: <input type="text" name="loca_name" required><br>
@@ -81,7 +84,7 @@ if (isset($_SESSION['message'])) {
                     });
                 }
             </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL5OzoBLM3FMcyTmEnbEGpFwrSHnywPSA&libraries=places&callback=initAutocomplete" async defer></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&libraries=places&callback=initAutocomplete" async defer></script>
             <input type="submit" class="button">
         </form>
     </div>

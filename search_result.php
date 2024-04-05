@@ -1,5 +1,6 @@
 <?php
 // search_result.php
+require 'api-key.php';
 
 $link = mysqli_connect('localhost', 'root', '12345678', 'travel');
 
@@ -98,7 +99,7 @@ $row = mysqli_fetch_assoc($result);
             }
         </script>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL5OzoBLM3FMcyTmEnbEGpFwrSHnywPSA&libraries=places&callback=initAutocomplete" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&libraries=places&callback=initAutocomplete" async defer></script>
     </div>
 </body>
 
